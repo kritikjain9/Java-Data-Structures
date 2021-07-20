@@ -1,0 +1,762 @@
+//pattern 1
+
+*	
+*	*	
+*	*	*	
+*	*	*	*	
+*	*	*	*	*
+
+
+Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		
+		int i = 1;
+		int j,k ;
+		
+		while(i<=n) {	
+			j = 1;
+			while(j <= i) {
+				System.out.print("*\t");
+				j++;
+			}i++;
+			System.out.println();
+		}
+	}
+}
+
+==============================OR==============================
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j <= i; j++){
+                System.out.print("*\t");
+            }
+            System.out.println();
+        }
+    }
+}
+
+-------------------------------------------------------------------------------
+
+//PATTERN 2
+
+*	*	*	*	*	
+*	*	*	*	
+*	*	*	
+*	*	
+*	
+
+		Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		for(int i = n; i >= 1; i--){
+		    for(int j = 1; j<=i; j++){
+		        System.out.print("*\t");
+		    }System.out.println();
+		}           
+        }
+}
+
+==============================OR==============================
+
+for (int i = 0; i < n; i++) {
+            for (int j = n; j > i; j--) {
+                System.out.print("*\t");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+//PATTERN 3
+
+				*	
+			*	*	
+		*	*	*	
+	*	*	*	*	
+*	*	*	*	*	
+
+
+	Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+
+        int stars = 1;
+        int spaces = n - 1;
+
+        for (int i = 1; i <= n; i++) {
+
+            for (int j = 1; j <= spaces; j++) {
+                System.out.print("\t");
+            }
+            for (int k = 1; k <= stars; k++) {
+                System.out.print("*\t");
+            }
+
+            spaces--;
+            stars++;
+            System.out.println();
+        }
+    }
+}
+
+
+
+//PATTERN 4
+
+*	*	*	*	*	
+	*	*	*	*	
+		*	*	*	
+			*	*	
+				*	
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int space = 0;
+        int star = n;
+        
+        for(int i = 1;i <= n; i++)
+        {
+            for(int j = 1; j<=space;j++)
+            {
+                System.out.print("\t");
+            }
+            for(int j = 1; j<=star;j++)
+            {
+                System.out.print("*\t");
+            }System.out.println();
+            space++;
+            star--;
+        }   
+    }
+}
+
+
+
+//PATTERN 5
+
+
+
+		*	
+	*	*	*	
+*	*	*	*	*	
+	*	*	*	
+		*	
+
+
+Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		int space = n/2;
+		int star = 1;
+		for(int i = 1; i<=n; i++)
+		{
+			for(int j = 1; j<=space; j++)
+			{
+				System.out.print("\t");
+			}
+			for(int j = 1; j<=star; j++)
+			{
+				System.out.print("*\t");
+			}
+			if(i <= n/2)
+			{
+				space--;
+				star+=2;
+			}else
+			{
+				space++;
+				star-=2;
+			}
+			System.out.println();
+				
+		}
+	}
+}
+
+
+//PATTERN 6(HOLLOW DIAMOND)
+
+
+
+*	*	*		*	*	*	
+*	*				*	*	
+*						*	
+*	*				*	*	
+*	*	*		*	*	*	
+
+
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        
+        int space= 1;
+        int star = n/2+1;
+        	
+        for(int i = 1; i<=n;i++)
+        {
+        	for(int j = 1; j<=star;j++) {
+        		System.out.print("*\t");
+        	}
+        	for(int j = 1; j<=space; j++) {
+        		System.out.print("\t");
+        	}
+        	for(int j=1; j<=star;j++) {
+        		System.out.print("*\t");	
+        	}
+        	
+        	if(i<=n/2) {
+        		space+=2;
+        		star--;
+        	}else {
+        		space-=2;
+        		star++;
+        		
+        	}System.out.println();
+        }
+    }
+}
+
+
+
+//PATTERN 7
+
+
+*	
+	*	
+		*	
+			*	
+				*	
+
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int space = 0;
+        int star = 1;
+        
+        for(int i = 1; i<=n; i++)
+        {
+        	for(int j = 1; j <= space;j++)
+        	{
+        		System.out.print("\t");
+        	}
+        	
+        	System.out.print("*\t");
+        	
+        	space++;
+        	System.out.println();
+        }
+    }   
+}
+
+=================OR=================
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        	
+        for(int i=1; i<=n;i++)
+        {
+        	for(int j = 1; j<=i;j++)
+        	{
+        		if(i==j) {
+        			System.out.print("*\t");
+        		}else {
+        			System.out.print("\t");
+        		}
+        	}System.out.println();
+        }
+    }
+}
+
+
+
+//PATTERN 8
+
+
+				*	
+			*	
+		*	
+	*	
+*	
+
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int space = n-1;
+        int star = 1;
+        
+        for(int i = 1; i<=n; i++)
+        {
+        	for(int j = 1; j <= space;j++)
+        	{
+        		System.out.print("\t");
+        	}
+        	
+        	System.out.print("*\t");
+        	
+        	space--;
+        	System.out.println();
+        }
+    }   
+}
+
+
+//PATTERN 9     // Bhery goooood question (Dimaag ki taaqat lagegi isme)
+
+
+*				*	
+	*		*		
+		*			
+	*		*		
+*				*	
+
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i + j == n + 1 || i==j) {
+                    System.out.print("*\t");
+                } 
+                else {
+                    System.out.print("\t");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+//PATTERN 10(practice again)
+
+
+
+		*	
+	*		*	
+*				*	
+	*		*	
+		*	
+
+
+
+	Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int s1 = n/2;
+        int s2 = -1;
+        
+        for(int i = 1;i<=n;i++) {
+        	for(int j = 1;j<=s1;j++) {
+        		System.out.print("\t");
+        	}
+        	System.out.print("*\t");
+        	for(int j = 1;j<=s2;j++) {
+        		System.out.print("\t");
+        	}if(i>1 && i<n) {
+        		System.out.print("*\t");
+        	}
+        	if(i<=n/2) {
+        		s1--;
+        		s2+=2;
+        	}else {
+        		s1++;
+        		s2-=2;
+        	}System.out.println();
+        	}
+       }
+}
+
+
+
+//PATTERN 11
+
+
+1	
+2	3	
+4	5	6	
+7	8	9	10	
+11	12	13	14	15
+
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int k = 1;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(k + "\t");
+                k++;
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+//PATTERN 12
+
+
+0
+1	
+2	3	
+5	8	13	
+21	34	55	89	
+144	233	377	610	987
+
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        
+        int a = 0;
+        int b = 1;
+     
+        for(int i = 1;i<=n;i++) {
+        	for(int j=1;j<=i;j++) {
+        		System.out.print(a+"\t");
+        		int c = a + b;
+        		a = b;
+        		b = c;
+        	}System.out.println();
+        }
+    }
+}
+
+
+
+//PATTERN 13 (Practice && revise the logic written in the java copy[3/10/2020])
+
+
+1	
+1	1	
+1	2	1	
+1	3	3	1	
+1	4	6	4	1	
+1	5	10	10	5	1	
+
+
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int icj = 1;
+            for (int j = 0; j <= i; j++) {
+                System.out.print(icj + "\t");
+                int icjp1 = (icj * (i - j) / (j + 1));
+                icj = icjp1;
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+//PATTERN 14
+
+5 * 1 = 5
+5 * 2 = 10
+5 * 3 = 15
+5 * 4 = 20
+5 * 5 = 25
+5 * 6 = 30
+5 * 7 = 35
+5 * 8 = 40
+5 * 9 = 45
+5 * 10 = 50
+
+
+Scanner scn = new Scanner(System.in);
+        
+        int n = scn.nextInt();
+        for(int i = 1;i<=10;i++){
+         	System.out.println(n+" * "+i+" = "+(n*i));
+        }
+    }
+}
+
+
+
+
+//PATTERN 15 {BEST QUESTION OF ALL TIME} 
+// [ABSTRACTION] Try to break the problem into smaller parts, then nothing would be able to stop you man!
+// See the notes!
+
+
+
+		1	
+	2	3	2	
+3	4	5	4	3	
+	2	3	2	
+		1	
+
+
+
+Scanner scn = new Scanner(System.in);
+
+        int n = scn.nextInt();
+        int space = n / 2;
+        int star = 1;
+        int val = 1;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= space; j++) {
+                System.out.print("\t");
+            }
+            
+            int cval = val;
+            for (int j = 1; j <= star; j++) {
+                System.out.print(cval + "\t");
+                if (j <= star / 2) {
+                    cval++;
+                } else {
+                    cval--;
+                }
+            }
+            
+            if (i <= n / 2) {
+                space--;
+                star += 2;
+                val++;
+            } else {
+                space++;
+                star -= 2;
+                val--;
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+//PATTERN 16 [Great question, funda wahi hai, pehle same pattern star format mei, then uske numbers ki value control karna hai]
+
+
+1						1	
+1	2				2	1	
+1	2	3		3	2	1	
+1	2	3	4	3	2	1	
+
+
+Scanner scn = new Scanner(System.in);
+
+        int n = scn.nextInt();
+        int sp = (n * 2) - 3;
+        int st = 1;
+
+        for (int i = 1; i <= n; i++) {
+            int val = 1;
+            for (int j = 1; j <= st; j++) {
+                System.out.print(val + "\t");
+                val++;
+            }
+            for (int j = 1; j <= sp; j++) {
+                System.out.print("\t");
+            }
+            if (i == n) {
+                st--;
+                val--;
+            }
+            for (int j = 1; j <= st; j++) {
+                val--;
+                System.out.print(val + "\t");
+            }
+            sp -= 2;
+            st += 1;
+            System.out.println();
+        }
+    }
+}
+
+
+
+//PATTERN 17 
+
+
+		*	
+		*	*	
+*	*	*	*	*	
+		*	*	
+		*	
+
+
+Scanner scn = new Scanner(System.in);
+
+        int n = scn.nextInt();
+        int sp = n/2;
+        int st = 1;
+        
+        for(int i = 1; i<=n;i++){
+            for(int j = 1;j<=sp;j++){
+                if(i == n/2 + 1){
+                    System.out.print("*\t");
+                }else{
+                System.out.print("\t");
+            }
+        }
+            for(int j = 1; j<=st;j++){
+                System.out.print("*\t");
+            }
+            if(i<=n/2){
+                st++;
+            }else{
+                st--;
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+//PATTERN 18 {Hourglass}
+//[Hadd easy hai, bas opertators dhang se padh bhai mere]//[&& ||]
+
+
+*	*	*	*	*	*	*	
+	*				*	
+		*		*	
+			*	
+		*	*	*	
+	*	*	*	*	*	
+*	*	*	*	*	*	*
+
+
+Scanner scn = new Scanner(System.in);
+
+        int n = scn.nextInt();
+        int sp = 0;
+        int st = n;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= sp; j++) {
+                System.out.print("\t");
+            }
+            for (int j = 1; j <= st; j++) {
+                if (i > 1 && i <= n / 2 && j > 1 && j <= st - 1) {
+                    System.out.print("\t");
+                } else {
+                    System.out.print("*\t");
+                }
+            }
+            if (i <= n / 2) {
+                sp++;
+                st -= 2;
+            } else {
+                sp--;
+                st += 2;
+            }
+            System.out.println();
+        }
+    }
+}	
+
+
+
+//PATTERN 19 {Swastik}
+// [Manual question hai, i aur j ki value pakadni hai]
+
+
+
+*		*	*	*	
+*		*			
+*	*	*	*	*	
+		*		*	
+*	*	*		*	
+
+
+
+Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == 1) {
+                    if (j == 1 || j >= n / 2 + 1) {
+                        System.out.print("*\t");
+                    } else {
+                        System.out.print("\t");
+                    }
+                } else if (i <= n / 2) {
+                    if (j == 1 || j == n / 2 + 1) {
+                        System.out.print("*\t");
+                    } else {
+                        System.out.print("\t");
+                    }
+                } else if (i == n / 2 + 1) {
+                    System.out.print("*\t");
+                } else if (i < n) {
+                    if (j == n || j == n / 2 + 1) {
+                        System.out.print("*\t");
+                    } else {
+                        System.out.print("\t");
+                    }
+                } else {
+                    if (j <= n / 2 + 1 || j == n) {
+                        System.out.print("*\t");
+                    } else {
+                        System.out.print("\t");
+                    }
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+//PATTERN 20 {W}
+//(Pattern pr zara dhyan se meditate karo, koi na koi property pakad mei aa hi jaegi)
+
+
+
+*				*	
+*				*	
+*		*		*	
+*	*		*	*	
+*				*	
+
+
+
+
+Scanner scn = new Scanner(System.in);
+
+        int n = scn.nextInt();
+        
+        for(int i = 1; i<=n; i++){
+            for(int j = 1; j<=n; j++){
+                if(j==1 || j ==n){
+                    System.out.print("*\t");   
+                }else if(i > n/2 && (i==j || i+j == n+1)){
+                    System.out.print("*\t");
+                }else{
+                    System.out.print("\t");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

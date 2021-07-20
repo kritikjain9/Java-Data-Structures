@@ -1,0 +1,269 @@
+[1]GCD and LCM
+
+
+import java.util.*;
+    
+    public class Main{
+    
+    public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+      int num1 = scn.nextInt();
+      int num2 = scn.nextInt();
+      
+      int tmpn1 = num1;
+      int tmpn2 = num2;
+      
+      while(tmpn1 % tmpn2 != 0){
+          int rem = tmpn1 % tmpn2;
+          tmpn1 = tmpn2;
+          tmpn2 = rem;
+      }
+      
+      int gcd = tmpn2;
+      int lcm = (num1 * num2) / gcd;
+      
+      System.out.println(gcd);
+      System.out.println(lcm);
+      
+      
+     }
+    }
+
+*******************using recursion**************
+
+public static void main(String[] args) {
+        int n1 = 366, n2 = 60;
+        int hcf = hcf(n1, n2);
+
+        System.out.println("G.C.D is "+hcf);
+    }
+
+    public static int hcf(int n1, int n2)
+    {
+        if (n2 != 0)
+            return hcf(n2, n1 % n2);
+        else
+            return n1;
+    }
+}
+
+
+--------------------------------------------------------------------------------------------------------
+[2] Prime Number
+
+import java.util.*;
+  
+  public class Main{
+  
+  public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+
+for(int i = 0; i < t; i++){
+          int n = scn.nextInt();
+          
+          int count = 0;
+          for(int j = 2; j * j <= n; j++){
+              if(n % j == 0){
+                  count++;
+                  break;
+              }
+          }
+          if(count == 0){
+              System.out.println("prime");
+          }else{
+              System.out.println("not prime");
+          }
+    }
+}
+
+
+--------------------------------------------------------------------------------------------------------
+[3] // DECIMAL TO ANY BASE
+1. You are given a decimal number n.
+2. You are given a base b.
+3. You are required to convert the number n into its corresponding value in base b.
+
+
+public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int b = scn.nextInt();
+        int dn = getValueInBase(n, b);
+        System.out.println(dn);
+    }
+
+    public static int getValueInBase(int n, int b) {
+
+        int rv = 0;
+
+        int power = 1;
+
+        while (n > 0) {
+            int rem = n % b;
+            n = n / b;
+
+            rv += rem * power;
+            power = power * 10;
+        }
+        return rv;
+    }
+}
+
+--------------------------------------------------------------------------------------------------------
+[2] ANYBASE TO DECIMAL
+1. You are given a number n.
+2. You are given a base b. n is a number on base b.
+3. You are required to convert the number n into its corresponding value in decimal number system.
+
+
+public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int b = scn.nextInt();
+        int d = getValueIndecimal(n, b);
+        System.out.println(d);
+    }
+
+    public static int getValueIndecimal(int n, int b) {
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % 10;
+            n = n / 10;
+
+            rv += dig * power;
+            power = power * b;
+        }
+
+        return rv;
+    }
+}
+
+--------------------------------------------------------------------------------------------------------
+[3]// ANYBASE TO ANY BASE
+1. You are given a number n.
+2. You are given a base b1. n is a number on base b.
+3. You are given another base b2.
+4. You are required to convert the number n of base b1 to a number in base b2.
+
+
+public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int base1 = scn.nextInt();
+        int base2 = scn.nextInt();
+        int d = getValue(n, base1, base2);
+        System.out.println(d);
+
+    }
+
+    public static int getValue(int n, int b1, int b2) {
+
+        int conversion1 = anyBaseToDecimal(n, b1);
+        int conversion2 = DecimalToAnyBase(conversion1, b2);
+
+        return conversion2;
+    }
+
+    public static int anyBaseToDecimal(int n, int base) {
+
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % 10;
+            n = n / 10;
+            rv += dig * power;
+            power *= base;
+        }
+
+        return rv;
+
+    }
+
+    public static int DecimalToAnyBase(int n, int base) {
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % base;
+            n = n / base;
+            rv += dig * power;
+            power *= 10;
+        }
+
+        return rv;
+    }
+
+}
+
+--------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------
+//STRINGS//
+
+[]Toggle Case
+
+import java.util.*;
+import java.io.*;
+
+public class Main{
+    public static void main(String[] args)throws IOException{
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String s = br.readLine();
+        int l = s.length();
+        String toggle = "";
+        
+        for(int i = 0; i < l; i++){
+            char ch = s.charAt(i);
+            if(Character.isLowerCase(ch)){
+                toggle += Character.toUpperCase(ch);
+            }
+            else if(Character.isUpperCase(ch)){
+                toggle += Character.toLowerCase(ch);
+            }
+            else{
+                toggle += ch;
+            }
+            
+            }
+            System.out.println(toggle);
+        }
+    }
+
+
+--------------------------------------------------------------------------------------------------------
+[] Palindrome
+
+
+String s = br.readLine();
+        int l = s.length();
+        String rev = "";
+        
+        for(int i = l - 1; i >= 0; i--){
+            char ch = s.charAt(i);
+            rev = rev + ch;
+        }
+        if(rev.equalsIgnoreCase(s) == true){
+            System.out.println("Palindrome");
+        }else
+        System.out.println("Not a Palindrome");
+        
+        }
+    }
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------------------------------

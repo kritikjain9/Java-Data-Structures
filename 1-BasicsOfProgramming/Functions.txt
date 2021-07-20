@@ -1,0 +1,536 @@
+[0]// DIGIT FREQUENCY 
+
+1. You are given a number n.
+2. You are given a digit d.
+3. You are required to calculate the frequency of digit d in number n.
+
+
+public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int d = scn.nextInt();
+        int f = getDigitFrequency(n, d);
+        System.out.println(f);
+    }
+
+    public static int getDigitFrequency(int n, int d) {
+        int f = 0;
+
+        while (n > 0) {
+            int number = n % 10;
+            n /= 10;
+            
+            if (number == d) {
+                f += 1;
+            }
+        }
+
+        return f;
+
+    }
+}
+
+
+
+
+----------------------------------------------------------------------------------
+
+
+
+[1] // DECIMAL TO ANY BASE
+1. You are given a decimal number n.
+2. You are given a base b.
+3. You are required to convert the number n into its corresponding value in base b.
+
+
+public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int b = scn.nextInt();
+        int dn = getValueInBase(n, b);
+        System.out.println(dn);
+    }
+
+    public static int getValueInBase(int n, int b) {
+
+        int rv = 0;
+
+        int power = 1;
+
+        while (n > 0) {
+            int rem = n % b;
+            n = n / b;
+
+            rv += rem * power;
+            power = power * 10;
+        }
+        return rv;
+    }
+}
+
+======================OR=================================
+
+//easy tasks ko complicate kyu karna bhai? Seedha seedha power ko 10 se badha do bete!
+
+
+public static int getValueInBase(int n, int b) {
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int rem = n % b;
+            n = n / b;
+            rv += power * rem;
+            power = power * 10;
+        }
+        return rv;
+    }
+}
+
+
+
+----------------------------------------------------------------------------------
+
+
+
+[2] ANYBASE TO DECIMAL
+1. You are given a number n.
+2. You are given a base b. n is a number on base b.
+3. You are required to convert the number n into its corresponding value in decimal number system.
+
+
+public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int b = scn.nextInt();
+        int d = getValueIndecimal(n, b);
+        System.out.println(d);
+    }
+
+    public static int getValueIndecimal(int n, int b) {
+        int rv = 0;
+
+        int power = 0;
+        while (n > 0) {
+            int dig = n % 10;
+            n = n / 10;
+
+            rv += dig * ((int) Math.pow(b, power));
+            power++;
+        }
+
+        return rv;
+    }
+}
+
+
+
+----------------------------------------------------------------------------------
+
+
+
+[3]// ANYBASE TO ANY BASE
+1. You are given a number n.
+2. You are given a base b1. n is a number on base b.
+3. You are given another base b2.
+4. You are required to convert the number n of base b1 to a number in base b2.
+
+
+public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int base1 = scn.nextInt();
+        int base2 = scn.nextInt();
+        int d = getValue(n, base1, base2);
+        System.out.println(d);
+
+    }
+
+    public static int getValue(int n, int b1, int b2) {
+
+        int conversion1 = anyBaseToDecimal(n, b1);
+        int conversion2 = DecimalToAnyBase(conversion1, b2);
+
+        return conversion2;
+    }
+
+    public static int anyBaseToDecimal(int n, int base) {
+
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % 10;
+            n = n / 10;
+            rv += dig * power;
+            power *= base;
+        }
+
+        return rv;
+
+    }
+
+    public static int DecimalToAnyBase(int n, int base) {
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % base;
+            n = n / base;
+            rv += dig * power;
+            power *= 10;
+        }
+
+        return rv;
+    }
+
+}
+
+
+
+----------------------------------------------------------------------------------
+
+
+
+[4]// ANYBASE ADDITION
+1. You are given a base b.
+2. You are given two numbers n1 and n2 of base b.
+3. You are required to add the two numbes and print their value in base b.
+
+
+
+public static void main(String[] args) {
+Scanner scn = new Scanner(System.in);
+        int base = scn.nextInt();
+        int n1 = scn.nextInt();
+        int n2 = scn.nextInt();
+
+        int n1ToDecimal = anyBaseToDecimal(n1, base);
+        int n2ToDecimal = anyBaseToDecimal(n2, base);
+
+        int answer = decimalToAnyBase(n1ToDecimal + n2ToDecimal, base);
+        System.out.println(answer);
+
+    }
+
+    public static int anyBaseToDecimal(int n, int base) {
+
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % 10;
+            n = n / 10;
+            rv += dig * power;
+            power *= base;
+        }
+
+        return rv;
+
+    }
+
+    public static int decimalToAnyBase(int n, int base) {
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % base;
+            n = n / base;
+            rv += dig * power;
+            power *= 10;
+        }
+
+        return rv;
+    }
+}
+
+============================OR===============================
+
+	//*THE CARRY OVER APPROACH*
+
+Scanner scn = new Scanner(System.in);
+      int b = scn.nextInt();
+      int n1 = scn.nextInt();
+      int n2 = scn.nextInt();
+  
+      int d = getSum(b, n1, n2);
+      System.out.println(d);
+   }
+  
+   public static int getSum(int base, int num1, int num2){
+       int rv = 0;
+  
+       int carry = 0;
+       int power = 1;
+       while(num1 > 0 || num2 > 0 || carry > 0){		// tab tak chalana hai loop, jab tak n1 ya n2 ya phir carry == 0 na ho jae
+          int d1 = num1 % 10;
+          int d2 = num2 % 10;
+          num1 = num1 / 10;
+          num2 = num2 / 10;
+  
+          int final_digit = d1 + d2 + carry;                    //main logic lies here
+          carry = final_digit / base;			        //carry ka logic (base k hissab se dekh) Ex- Agar final digit 9 aayi, aur base 8 tha, then carry will be = 1
+          final_digit = final_digit % base;			//jo final digit print karwana hai apne ko 
+  
+          rv += final_digit * power;
+          power *= 10;
+       }
+  
+       return rv;
+   }
+  }
+
+
+
+----------------------------------------------------------------------------------
+
+
+[5]// ANYBASE SUBTRACTION
+1. You are given a base b.
+2. You are given two numbers n1 and n2 of base b.
+3. You are required to subtract n1 from n2 and print the value.
+
+
+public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+        int base = scn.nextInt();
+        int n1 = scn.nextInt();
+        int n2 = scn.nextInt();
+
+        int n1ToDecimal = anyBaseToDecimal(n1, base);
+        int n2ToDecimal = anyBaseToDecimal(n2, base);
+
+        int answer = decimalToAnyBase(n2ToDecimal-n1ToDecimal, base);
+        System.out.println(answer);
+
+    }
+
+    public static int anyBaseToDecimal(int n, int base) {
+
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % 10;
+            n = n / 10;
+            rv += dig * power;
+            power *= base;
+        }
+
+        return rv;
+
+    }
+
+    public static int decimalToAnyBase(int n, int base) {
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % base;
+            n = n / base;
+            rv += dig * power;
+            power *= 10;
+        }
+
+        return rv;
+    }
+}
+
+============================OR===============================
+
+//paper pe pehle WHAT & HOW solve karo, then the code will be a piece of cake
+
+public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+	      int b = scn.nextInt();
+	      int n1 = scn.nextInt();
+	      int n2 = scn.nextInt();
+	  
+	      int ld = getDifference(b, n1, n2);
+	      System.out.println(ld);
+	   }
+	  
+public static int getDifference(int b, int n1, int n2){
+       int rv = 0;
+  
+       int carry = 0;
+       int power = 1;
+       while(n2 > 0){
+          int d1 = n1 % 10;
+          int d2 = n2 % 10;
+          n1 = n1 / 10;
+          n2 = n2 / 10;
+  								//-------------->>yaha pe ye bhi kar sakte the
+          int lastDigit = d2 - d1 - carry;                      //        	int lastDigit = 0;
+  								//		lastDigit = d2 + carry;
+          if(lastDigit < 0){					//		if(d2 >= d1){
+              carry = 1;					//		carry = 0;
+              lastDigit += b;					//		lastDigit = d2-d1;
+          } else {						//		}else{
+              carry = 0;					//		carry = 1;
+          }							//		lastDigit = d2+b-d1;
+  								//		}
+          rv += lastDigit * power;
+          power = power * 10;
+       }
+       return rv;
+    }
+}
+
+
+
+----------------------------------------------------------------------------------
+
+
+//[6] ANYBASE MULTIPLICATION
+1. You are given a base b.
+2. You are given two numbers n1 and n2 of base b.
+3. You are required to multiply n1 and n2 and print the value.
+
+public static void main(String[] args) {
+    Scanner scn = new Scanner(System.in);
+        int base = scn.nextInt();
+        int n1 = scn.nextInt();
+        int n2 = scn.nextInt();
+
+        int n1ToDecimal = anyBaseToDecimal(n1, base);
+        int n2ToDecimal = anyBaseToDecimal(n2, base);
+
+        int answer = decimalToAnyBase(n2ToDecimal*n1ToDecimal, base);
+        System.out.println(answer);
+
+    }
+
+    public static int anyBaseToDecimal(int n, int base) {
+
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % 10;
+            n = n / 10;
+            rv += dig * power;
+            power *= base;
+        }
+
+        return rv;
+
+    }
+
+    public static int decimalToAnyBase(int n, int base) {
+        int rv = 0;
+
+        int power = 1;
+        while (n > 0) {
+            int dig = n % base;
+            n = n / base;
+            rv += dig * power;
+            power *= 10;
+        }
+
+        return rv;
+    }
+}
+
+============================OR==================================
+
+//sabse bada code lagega, but agar paper pe logic draw karke question banaega na, tab bacchon jaisa hai ye ques.
+
+
+
+public static void main(String[] args) {
+    Scanner scn = new Scanner(System.in);
+    int b = scn.nextInt();
+    int n1 = scn.nextInt();
+    int n2 = scn.nextInt();
+
+    int d = getProduct(b, n1, n2);
+    System.out.println(d);
+ }
+
+ public static int getProduct(int b, int n1, int n2){
+     int rv = 0;
+    
+     int power = 1;
+     while(n2 > 0){
+         
+        //  The game lies here!
+        //  Ab n2 mei jitne bhi digits honge, unme me se har ek se n1 
+        //  ka prodect nikal lenge
+         
+         int d2 = n2 % 10;
+         n2 /= 10;
+         int singleDigitProduct = getProductWithOneDig(b, n1, d2);
+         
+        //  Ab un saare products ko x10 (jaise multiplication mei add karte
+        //  hain) karke add kar denge, then we'll get the final answer.
+         
+         rv = getSum(b, rv, singleDigitProduct * power);
+         power*=10;
+     }
+     
+     return rv;
+ }
+ 
+ public static int getProductWithOneDig(int b, int n1, int d2){
+     int rv = 0;
+     
+     int carry = 0;
+     int power = 1;
+     while(n1 > 0 || carry > 0){
+         int dig = n1 % 10;
+         n1 = n1 / 10;
+         dig = dig * d2 + carry;
+         
+         carry = dig / b;
+         dig = dig % b;
+         
+         rv += dig * power;
+         power *= 10;
+         
+     }
+     
+     return rv;
+ }
+
+       public static int getSum(int b, int n1, int n2){
+       int rv = 0;
+  
+       int c = 0;
+       int p = 1;
+       while(n1 > 0 || n2 > 0 || c > 0){
+          int d1 = n1 % 10;
+          int d2 = n2 % 10;
+          n1 = n1 / 10;
+          n2 = n2 / 10;
+  
+          int d = d1 + d2 + c;
+          c = d / b;
+          d = d % b;
+  
+          rv += d * p;
+          p = p * 10;
+       }
+  
+       return rv;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

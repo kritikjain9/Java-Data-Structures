@@ -1,0 +1,897 @@
+[1] SPAN OF ARRAY
+1. You are given a number n, representing the count of elements.
+2. You are given n numbers.
+3. You are required to find the span of input. Span is defined as difference of maximum value and minimum value.
+
+
+public static void main(String[] args) throws Exception {
+    
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    
+    int[] arr = new int[n];
+    for(int i = 0; i < arr.length; i++){
+        arr[i] = scn.nextInt();
+    }
+    
+    int min = arr[0];
+    int max = arr[0];
+    for(int i = 1; i < arr.length; i++){
+        if(arr[i] < min){
+            min = arr[i];
+        }
+        if(arr[i] > max){
+            max = arr[i];
+        }
+    }
+    System.out.println(max - min);
+    
+   } 
+}
+
+
+====================================OR========================================
+
+
+public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int n = Integer.parseInt(br.readLine());
+    int[] arr = new int[n];
+
+    for(int i = 0; i < n; i++){
+       arr[i] = Integer.parseInt(br.readLine());
+    }
+
+    int min = arr[0];
+    int max = arr[0];
+
+    for(int i = 1; i < arr.length; i++){
+       if(arr[i] < min){
+          min = arr[i];
+       }
+
+       if(arr[i] > max){
+          max = arr[i];
+       }
+    }
+
+    int span = max - min;
+    System.out.println(span);
+ }
+
+}
+
+
+---------------------------------------------------------------------------------------------------------
+
+[2]Find Element In An Array
+1.You are given a number n, representing the size of array a.
+2.You are given n numbers, representing elements of array a.
+3. You are given another number d.
+4. You are required to check if d number exists in the array a and at what index (0 based). If found print the index, otherwise print -1.
+
+
+
+public static void main(String[] args) throws Exception {
+    
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    
+    int[] arr = new int[n];
+    for(int i = 0; i < arr.length; i++){
+        arr[i] = scn.nextInt();
+    }
+    
+    int d = scn.nextInt();
+    
+    int index = -1;
+    for(int i = 0; i < arr.length; i++){
+        if(arr[i] == d){
+            index = i;
+            break;
+        }
+    }
+    System.out.println(index);
+  }
+}
+
+====================================OR=============================================
+
+
+public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int n = Integer.parseInt(br.readLine());
+    int[] arr = new int[n];
+
+    for(int i = 0; i < n; i++){
+       arr[i] = Integer.parseInt(br.readLine());
+    }
+
+    int d = Integer.parseInt(br.readLine());
+
+    for(int i = 0; i < arr.length; i++){
+       //pehle arr[i] ko dekhega, then check karega ki wo 'd' ke equal hai ya nahi  
+       if(d == arr[i]){
+         System.out.println(i);
+         return;
+       }
+    }
+
+    System.out.println(-1);
+ }
+
+}
+
+---------------------------------------------------------------------------------------------------------
+
+[3] Bar chart
+1. You are given a number n, representing the size of array a.
+2. You are given n numbers, representing elements of array a.
+3. You are required to print a bar chart representing value of arr a.
+
+Sample Input
+5
+3
+1
+0
+7
+5
+
+Sample Output
+
+			*		
+			*		
+			*	*	
+			*	*	
+*			*	*	
+*			*	*	
+*	*		*	*	
+
+
+public static void main(String[] args) throws Exception {
+    Scanner scn = new Scanner(System.in);
+    
+    int n = scn.nextInt();
+    int[] arr = new int[n];
+    
+    for(int i = 0; i < arr.length; i++){
+        arr[i] = scn.nextInt();
+    }
+    
+    int max = arr[0];
+    for(int i = 1; i < arr.length; i++){
+        if(arr[i] > max){
+            max = arr[i];
+        }
+    }
+    
+    // upar se neeche ki taraf print karnge
+    // ye code row wise kaam karega
+    
+    for(int floor = max; floor >=1 ; floor--){
+        for(int i = 0; i < arr.length; i++)
+        {
+            // agar array ki first value floor k equal nahi hai, toh O/P k 1st, row k fisrt column mei tab print ho jaega, agar value equal hai, toh star print ho jaega and ye array ki sabhi values k liye hoga
+            
+            if(arr[i] >= floor){
+                System.out.print("*\t");
+            }
+            else{
+                System.out.print("\t");
+            }
+        }
+        System.out.println();
+      }
+    }
+}
+
+
+====================================OR====================================
+
+
+public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int n = Integer.parseInt(br.readLine());
+    int[] arr = new int[n];
+
+    int max = Integer.MIN_VALUE;
+    for(int i = 0; i < n; i++){
+       arr[i] = Integer.parseInt(br.readLine());
+       max = Math.max(max, arr[i]);
+    }
+
+    for(int i = 0; i < max; i++){
+       for(int val: arr){
+         if(val >= max - i){
+            System.out.print("*\t");
+         } else {
+            System.out.print("\t");
+         }
+       }
+
+       System.out.println();
+    }
+ }
+
+}
+
+
+---------------------------------------------------------------------------------------------------------
+
+
+***[4] Sum of two arrays // (dumdaar question)
+// abhi tak kiya gaya sabse dimmagdaar question
+1. You are given a number n1, representing the size of array a1.
+2. You are given n1 numbers, representing elements of array a1.
+3. You are given a number n2, representing the size of array a2.
+4. You are given n2 numbers, representing elements of array a2.
+5. The two arrays represent digits of two numbers.
+6. You are required to add the numbers represented by two arrays and print the
+arrays.
+
+
+public static void main(String[] args) throws Exception {
+	    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+	    
+	    int n1 = Integer.parseInt(br.readLine());
+	    int[] a1 = new int[n1];
+	    for(int i = 0; i < n1; i++) {
+	    	a1[i] = Integer.parseInt(br.readLine());
+	    }
+	    
+	    int n2 = Integer.parseInt(br.readLine());
+	    int[] a2 = new int[n2];
+	    for(int i = 0; i < n2; i++) {
+	    	a2[i] = Integer.parseInt(br.readLine());
+	    }
+	    
+	    // answer k liye max size ka array le liya
+
+	    int[] sum = new int[n1 > n2? n1 : n2];
+	    
+	    // single (for one's place value, then tens then ......) calculation k liye 3 variables liye 
+
+	    int i = n1 - 1;
+	    int j = n2 - 1;
+	    int k = sum.length -1 ;
+	    
+	    // agar 'k' ki value 9 ke paar nikal jae,that's why we are
+	    // taking  a variable carry, jise next place value mei add kar denge
+
+	    int carry = 0;
+	       
+	    	while(i >= 0 || j >= 0) {			// jab tak i aur j, done 0 se bade hain
+
+	    							//first iteration mei(carry = 0), digit ko carry se initilize karwa diya hai, further iterations mei carry ki value change hokar digit mei aaegi
+	    	int digit = carry;    
+	    	
+	    							//agar i (first array ki place values) khatam nahi hui, toh digit mei wo value bhi add karo
+	    	if(i >= 0){
+	    	    digit += a1[i];
+	    	}
+	    	
+	    	//similarly,
+	    	if(j >= 0){
+	    	    digit += a2[j];
+	    	}
+	    	
+	    	//next iteration k liye carry ki nayi value
+	    	carry = digit / 10;
+
+	    	// jo final digit sum ki k'th value pe jaega
+	    	digit = digit % 10;
+	    	sum[k] = digit;
+	    	
+	    	// i,j,k teeno ki next positions pe khelenge ab
+	    	i--;
+	    	j--;
+	    	k--;
+	    }
+	    
+	    //agar carry final aate aate zero nahi hua(this will occur when n1 != n2), then pehle carry ko print karwao
+	    if(carry > 0) {
+	    	System.out.println(carry);
+	    }
+	    //enhanced for loop 
+	    for(int val : sum) {			//for-each loop
+	    	System.out.println(val);
+	    }
+    }
+}
+
+====================================OR====================================
+
+
+public static void main(String[] args) throws Exception {
+	    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+	    
+	    int n1 = Integer.parseInt(br.readLine());
+	    int[] a1 = new int[n1];
+	    for(int i = 0; i < n1; i++) {
+	    	a1[i] = Integer.parseInt(br.readLine());
+	    }
+	    
+	    int n2 = Integer.parseInt(br.readLine());
+	    int[] a2 = new int[n2];
+	    for(int i = 0; i < n2; i++) {
+	    	a2[i] = Integer.parseInt(br.readLine());
+	    }
+	    
+	    int[] sum = new int[n1 > n2? n1 : n2];
+	    int carry = 0;
+	    
+	    int i = n1 - 1;
+	    int j = n2 - 1;
+	    int k = sum.length -1 ;
+	    
+	    // jab tak k rahega, tab tak ye chalega
+	    while(k >= 0){
+	       int digit = carry;
+	       
+	       if(i >= 0){
+	           digit += a1[i];
+	       }
+	       if(j >= 0){
+	           digit += a2[j];
+	       }
+	    
+	    carry = digit / 10;
+	    digit = digit % 10;
+	    
+	    sum[k] = digit;
+	    i--;
+	    j--;
+	    k--;
+	    }
+	    if(carry != 0 ){
+	        System.out.println(carry);
+	    }
+	    
+	    for(int val : sum){
+	        System.out.println(val);
+	    }
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+[5] Difference of two Arrays //(Beta dimaag khol apna)
+// tujhe khelna padega questions k saath, code ko apna dost bana, unnse baat kar ki bhai kya chahiye tumhe sahi o/p laane k liye
+
+1. You are given a number n1, representing the size of array a1.
+2. You are given n1 numbers, representing elements of array a1.
+3. You are given a number n2, representing the size of array a2.
+4. You are given n2 numbers, representing elements of array a2.
+5. The two arrays represent digits of two numbers.
+6. You are required to find the difference of two numbers represented by two arrays and print the arrays. a2 - a1
+
+Assumption - number represented by a2 is greater.
+
+
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+        
+        int n1 = scn.nextInt();
+        int[] a1 = new int[n1];
+        for (int i = 0; i < n1; i++) {
+            a1[i] = scn.nextInt();
+        }
+
+        int n2 = scn.nextInt();
+        int[] a2 = new int[n2];
+        for (int i = 0; i < n2; i++) {
+            a2[i] = scn.nextInt();
+        }
+
+        int[] diff = new int[n2];
+        int carry = 0;
+
+        int i = (n1 - 1);
+        int j = (n2 - 1);
+        int k = diff.length - 1;
+
+       while(k >= 0){
+           int digit = 0;
+           int aVal = i >= 0? a1[i] : 0;
+           
+           if(a2[j] + carry >= aVal)
+           {
+               digit = a2[j] + carry - aVal;
+               carry = 0;
+           }
+           else
+           {
+               digit = a2[j] + carry + 10 - aVal;
+               carry = -1;
+           }
+        
+            diff[k] = digit;
+
+            i--;
+            j--;
+            k--;
+
+        }
+        int index = 0;
+        while(index < diff.length){
+            if(diff[index] == 0){
+                index++;
+            }else{
+                break;
+            }
+        }
+        // System.out.println(index);
+        while(index < diff.length){
+            System.out.println(diff[index]);
+            index++;
+        }
+    
+
+    }
+
+}
+
+
+====================================OR==========================================
+//easier form(abstraction)
+
+
+public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    int n1 = Integer.parseInt(br.readLine());
+    int[] a1 = new int[n1];
+    for(int i = 0; i < n1; i++){
+       a1[i] = Integer.parseInt(br.readLine());
+    }
+
+    int n2 = Integer.parseInt(br.readLine());
+    int[] a2 = new int[n2];
+    for(int i = 0; i < n2; i++){
+       a2[i] = Integer.parseInt(br.readLine());
+    }
+
+    int[] diff = new int[n2];
+    int i = n1 - 1;
+    int j = n2 - 1;
+    int k = diff.length - 1;
+    int c = 0;
+    while(k >= 0){
+       int v;
+
+       if(i >= 0){
+         v = a1[i];
+       } else {
+         v = 0;
+       }
+
+       if(a2[j] + c >= v){
+         diff[k] = a2[j] + c - v;
+         c = 0;
+      } else {
+        diff[k] = a2[j] + c + 10 - v;
+        c = -1;
+      }
+
+       i--;
+       j--;
+       k--;
+    }
+
+    int idx = 0;
+    while(idx < diff.length){
+      if(diff[idx] != 0){
+        break;
+      } else {
+        idx++;
+      }
+    }
+
+    while(idx < diff.length){
+      System.out.println(diff[idx]);
+      idx++;
+    }
+ }
+
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+[6] Reverse An Array
+1. You are given a number n, representing the size of array a.
+2. You are given n numbers, representing elements of array a.
+3. You are required to reverse the contents of array a.
+
+
+public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    int n = Integer.parseInt(br.readLine());
+    int[] a = new int[n];
+    for(int i = 0; i < n; i++){
+       a[i] = Integer.parseInt(br.readLine());
+    }
+
+    for(int i = a.length-1; i >= 0; i--){
+        System.out.print(a[i] + " ");
+    }
+  }
+}
+
+====================================OR====================================
+
+  public static void display(int[] a){
+    StringBuilder sb = new StringBuilder();
+
+    for(int val: a){
+      sb.append(val + " ");
+    }
+    System.out.println(sb);
+  }
+
+  public static void reverse(int[] a){
+    //normal swap jaisa hi hai, first aur last index ko pakak k swap kar denge,
+    //first ko bada denge, last ko ghata denge(jab tak first index, last se badi hai)
+    int first = 0;
+    int last = a.length - 1;
+    
+    while(first < last){
+        
+        int temp = a[first];
+        a[first] = a[last];
+        a[last] = temp;
+        
+        first++;
+        last--;
+    }
+  }
+
+public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    int n = Integer.parseInt(br.readLine());
+    int[] a = new int[n];
+    for(int i = 0; i < n; i++){
+       a[i] = Integer.parseInt(br.readLine());
+    }
+
+    reverse(a);
+    display(a);
+ }
+
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[7] *** Rotate An Array [beautiful question]
+// bhai 20 min sab kuch chhod chaad k paper par apni imagination draw kar, ki tu question ko kaise solve kar sakta hai, phir dekh sabkuch bacchon jaisa ho jaega
+
+1. You are given a number n, representing the size of array a.
+2. You are given n numbers, representing elements of array a.
+3. You are given a number k.
+4. Rotate the array a, k times to the right (for positive values of k), and to
+the left for negative values of k.
+
+
+  public static void display(int[] a){
+    StringBuilder sb = new StringBuilder();
+
+    for(int val: a){
+      sb.append(val + " ");
+    }
+    System.out.println(sb);
+  }
+    
+    // bohot pyaara logic hai iss question ka
+    public static void reverse(int[] a,int s, int e){
+        int f = s;
+        int l = e;
+        
+        while(f < l){
+            int temp = a[f];
+            a[f] = a[l];
+            a[l] = temp;
+            f++;
+            l--;
+        }
+    }
+    
+  public static void rotate(int[] a, int k){
+    
+    k = k % a.length;
+    if(k < 0){
+        k += a.length;
+    }
+    
+    reverse(a, 0, a.length - k - 1);
+    reverse(a, a.length - k, a.length - 1);
+    reverse(a, 0, a.length - 1);
+  }
+  
+  
+    
+public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    int n = Integer.parseInt(br.readLine());
+    int[] a = new int[n];
+    for(int i = 0; i < n; i++){
+       a[i] = Integer.parseInt(br.readLine());
+    }
+    int k = Integer.parseInt(br.readLine());
+
+    rotate(a, k);
+    display(a);
+ }
+
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+[8] Inverse Of An Array
+1. You are given a number n, representing the size of array a.
+2. You are given n numbers, representing elements of array a.
+3. You are required to calculate the inverse of array a.
+
+  public static void display(int[] a){
+    StringBuilder sb = new StringBuilder();
+
+    for(int val: a){
+      sb.append(val + "\n");
+    }
+    System.out.println(sb);
+  }
+
+  public static int[] inverse(int[] a){
+    
+    int[] inv = new int[a.length];
+    
+    for(int i = 0; i < a.length; i++){
+        int v = a[i];
+        inv[v] = i;
+    }
+    
+   return inv;
+  }
+
+public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    int n = Integer.parseInt(br.readLine());
+    int[] a = new int[n];
+    for(int i = 0; i < n; i++){
+       a[i] = Integer.parseInt(br.readLine());
+    }
+
+    int[] inv = inverse(a);
+    display(inv);
+ }
+
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+[9] Print all subarrays
+1. You are given a number n, representing the count of elements.
+2. You are given n numbers.
+3. You are required to print all sub arrays of arr. Each sub array should be
+on separate line. For more clarity check out sample input and output.
+
+
+public static void main(String[] args) throws Exception {
+    
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    
+    int[] a = new int[n];
+    for(int i = 0; i < n; i++){
+        a[i] = scn.nextInt();
+    }
+        //ye array ki starting
+        for(int i = 0; i < a.length; i++){
+            // ye endpoint- kahaan tak ka array
+            for(int j = i; j < a.length; j++){
+                //ye i se leke j tak saari values print karega
+                for(int k = i; k <= j; k++){
+                    System.out.print(a[k] + "\t");
+                }
+             System.out.println();    
+            }
+        }
+    }
+}
+
+=========================================OR========================================
+
+//by using stringbuilder
+public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int n = Integer.parseInt(br.readLine());
+    int[] arr = new int[n];
+
+    for(int i = 0; i < n; i++){
+       arr[i] = Integer.parseInt(br.readLine());
+    }
+
+    StringBuilder sb = new StringBuilder();
+    for(int i = 0; i < arr.length; i++){
+       for(int j = i; j < arr.length; j++){
+          for(int k = i; k <= j; k++){
+            sb.append(arr[k] + "\t");
+          }
+          sb.append("\n");
+       }
+    }
+    System.out.println(sb);
+  }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+[10] Subsets of an array
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+[11] Ceil and floor
+Question
+1. You are given a number n, representing the size of array a.
+2. You are given n numbers, representing elements of array a.
+3. You are given another number d.
+4. You are required find the ceil and floor of d in the array a.
+
+//consider ceil = just aage waali value; floor = just peeche waali value
+// if d = value in the array, then ceil = floor = d
+
+Sample Input
+10
+1
+5
+10
+15
+22
+33
+40
+42
+55
+66
+
+34
+
+Sample Output
+40
+33
+
+public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = scn.nextInt();
+        }
+
+        int digit = scn.nextInt();
+
+        int l = 0;
+        int h = a.length - 1;
+        
+        int floor = 0;          //floor ko -inifinty maan lo
+        int ceil = 0;           //ceil ko +infinity maan lo 
+                
+        while (l <= h) {
+            int m = (l + h) / 2;
+            if (digit > a[m]) {         
+                l = m + 1;              // agar low change hua, toh floor set hoga
+                floor = a[m];
+            } else if (digit < a[m]) {
+                h = m - 1;              // agar high change hua, toh ceil set hoga
+                ceil = a[m];
+            } else {
+                ceil = a[m];            //dono same hue, then floor = ceil = digit
+                floor = a[m];
+		break;			//time complexity reduce ho jaegi halki si
+            }
+        }
+        System.out.println(ceil);
+        System.out.println(floor);
+
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+[12] First Index And Last Index
+Question
+1. You are given a number n, representing the size of array a.
+2. You are given n numbers, representing elements of array a.
+
+Asssumption - Array is sorted. Array may have duplicate values.
+
+Sample Input
+15
+1
+5
+10
+15
+22
+33
+33
+33
+33
+33
+40
+42
+55
+66
+77
+
+33
+
+Sample Output
+5
+9
+
+
+public static void main(String[] args) throws Exception {
+    Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = scn.nextInt();
+        }
+
+        int digit = scn.nextInt();
+
+        int l = 0;
+        int h = n;
+        
+        int fi = -1;            //-1 issilye, agar array mei value hi na ho, then -1 hi return ho jaega
+        int li = -1;
+        
+        //ABSTRACTION BETE, ABSTRACTION
+        //pehle last index nikal lo, phir first nikal lo(or vice-versa)
+        
+        while(l <= h){
+            
+            int m = (l + h) / 2;
+            if(digit > a[m]){
+                l = m + 1;    
+            }else if(digit < a[m]){
+                h = m - 1;
+            }else{
+                li = m;
+                l = m + 1;      //coz we have repeated values, toh aage koi same value na ho, tabhi low ko m+1 kiya hai until the loop becomes false
+            }
+        }
+        
+        l = 0;              // re-intializing
+        h = n;
+        
+        while(l <= h){
+            
+            int m = (l + h) / 2;
+            if(digit > a[m]){
+                l = m + 1;    
+            }else if(digit < a[m]){
+                h = m - 1;
+            }else{
+                fi = m;
+                h = m - 1;      //coz we have repeated values, toh iske peeche koi same value na ho, tabhi high ko m-1 kiya hai, until the loop becomes false
+            }
+        }
+        
+        System.out.println(fi);
+        System.out.println(li);
+        
+  }
+}
+	
+
+
+
+
+

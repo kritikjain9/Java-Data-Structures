@@ -1,0 +1,496 @@
+[1] 2d Array
+Question
+1. You are given a number n, representing the number of rows.
+2. You are given a number m, representing the number of columns.
+3. You are given n*m numbers, representing elements of 2d array a.
+4. You are required to display the contents of 2d array as suggested by output format below.
+
+Sample Input
+2
+4
+11
+12
+13
+14
+21
+22
+23
+24
+
+Sample Output
+11 12 13 14
+21 22 23 24
+
+
+
+public static void main(String[] args) throws Exception {
+    Scanner scn = new Scanner(System.in);
+    
+    int n = scn.nextInt();
+    int m = scn.nextInt();
+    
+    int[] [] a = new int[n] [m];
+    
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            a[i][j] = scn.nextInt();
+        }
+    }
+    
+    for(int i = 0; i < a.length; i++){				//a.length ki jagah 'n' bhi use kar sakte hain
+        for(int j = 0; j < a[i].length; j++){			//a[i].length ki jagah 'm' bhi use kar sakte hain
+            System.out.print(a[i][j] + " ");
+        }
+        System.out.println();
+    }
+    
+  }
+}
+
+----------------------------------------------------------------------------------------------------------------------------
+
+[2] Matrix Multiplication
+Question
+1. You are given a number n1, representing the number of rows of 1st matrix.
+2. You are given a number m1, representing the number of columns of 1st matrix.
+3. You are given n1*m1 numbers, representing elements of 2d array a1.
+4. You are given a number n2, representing the number of rows of 2nd matrix.
+5. You are given a number m2, representing the number of columns of 2nd matrix.
+6. You are given n2*m2 numbers, representing elements of 2d array a2.
+7. If the two arrays representing two matrices of dimensions n1 * m1 and n2 * m2 can be multiplied, display the contents of prd array as specified in output Format.
+8. If the two arrays can't be multiplied, print "Invalid input".
+
+Sample Input
+2
+3
+10
+0
+0
+0
+20
+0
+3
+4
+1
+0
+1
+0
+0
+1
+1
+2
+1
+1
+0
+0
+
+Sample Output
+10 0 10 0
+0 20 20 40
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+
+        int r1 = scn.nextInt();
+        int c1 = scn.nextInt();
+        int[][] m1 = new int[r1][c1];
+
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c1; j++) {
+                m1[i][j] = scn.nextInt();
+            }
+        }
+
+        int r2 = scn.nextInt();
+        int c2 = scn.nextInt();
+        int[][] m2 = new int[r2][c2];
+
+        for (int i = 0; i < r2; i++) {
+            for (int j = 0; j < c2; j++) {
+                m2[i][j] = scn.nextInt();
+            }
+        }
+        
+        //agar m1 ke column(c1), m2 ki rows(r2) k equal nahi hui, then hum multiply nahi kar sakte
+        if (c1 != r2) {
+            System.out.println("Invalid input");
+            return;             //else bhi laga sakte hain iski jagah, bas ye memory kam khaega
+        }
+    
+        int[][] product = new int[r1][c2];
+
+        for (int i = 0; i < product.length; i++) {
+            for (int j = 0; j < product[i].length; j++) {
+                for (int k = 0; k < c1; k++) {
+                    //paper pe solve karke dekh, jaise matrix ka sum nikaalte hain, ditto logic hai,(same for k bas likh k dekh ek baar chaman)
+                    product[i][j] += m1[i][k] * m2[k][j];
+                }
+            }
+        }
+
+        for (int i = 0; i < product.length; i++) {
+            for (int j = 0; j < product[i].length; j++) {
+                System.out.print(product[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+[3] Wave Traversal {paper pe banake k dekh gawar, ki karna kya hai}
+Question
+1. You are given a number n, representing the number of rows.
+2. You are given a number m, representing the number of columns.
+3. You are given n*m numbers, representing elements of 2d array a.
+4. You are required to traverse and print the contents of the 2d array in form of a wave - down the first column then up the second column and so on.
+Note - Please check the output format for details.
+
+Sample Input
+3
+4
+
+11
+12
+13
+14
+21
+22
+23
+24
+31
+32
+33
+34
+
+Sample Output (dekh dhyan se bete)
+11
+21
+31
+32
+22
+12
+13
+23
+33
+34
+24
+14
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+        int r = scn.nextInt();
+        int c = scn.nextInt();
+        int[][] a = new int[r][c];
+
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                a[i][j] = scn.nextInt();
+            }
+        }
+        
+        //isme apan simply colums ko dekh rahe hain(paper pe bana k dekh),jo ki increase ho rahe hain,
+        //to sabse pehla loop columns ka increasing order waala laga diya hai
+        for (int j = 0; j < c; j++) {
+            
+            //but agar column even hai, then rows increasing hi print karna hai, lekin agar rows odd hain,
+            //then unka order ulta ho jaega
+            if (j % 2 == 0) {
+                for (int i = 0; i < r; i++) {
+                    System.out.println(a[i][j]);
+                }
+            } else {
+                for (int i = r-1; i >= 0; i--) {
+                    System.out.println(a[i][j]);
+                }
+            }
+        }
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+
+[4]***Spiral Display [gol-gol display karna hai, chakli ki tarah, bahar se ander]
+Question
+1. You are given a number n, representing the number of rows.
+2. You are given a number m, representing the number of columns.
+3. You are given n*m numbers, representing elements of 2d array a.
+4. You are required to traverse and print the contents of the 2d array in form of a spiral.
+Note - Please check the sample output for details.
+
+Sample Input
+3
+5
+
+11
+12
+13
+14
+15
+21
+22
+23
+24
+25
+31
+32
+33
+34
+35
+
+Sample Output
+11
+21
+31
+32
+33
+34
+35
+25
+15
+14
+13
+12
+22
+23
+24
+
+
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+
+        int[][] a = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                a[i][j] = scn.nextInt();
+            }
+        }
+
+        int minr = 0;
+        int minc = 0;
+        int maxr = n - 1;
+        int maxc = m - 1;
+
+        //ye nOfElements issilye banaya, taaki loop ko bata sake ki kab rukna hai
+        int noOfElements = n * m;
+        int count = 0; 
+
+        while (count < noOfElements) {          //jab to N.E, total nOE se kam ho
+            
+            //left wall
+            // for loop type-> n(kitne bhi) variables rakh sakte ho bete, alag alag for loops ki zaroorat nahi hai
+            // matrices such as 3 * 5 mei, ye end mei repeat values print kar dega, issliye hum logon ko ek aur baar print karte waqt condition check krni padegi, taaki end mei values repeat nahi hongi
+            for (int i = minr, j = minc; i <= maxr && count < noOfElements; i++) {          
+                System.out.println(a[i][j]);
+                count++;//jab bhi element print ho, count badha do
+            }
+            minc++; //taaki corner values repeat na ho
+
+            //bottom wall
+            for (int i = maxr, j = minc; j <= maxc && count < noOfElements; j++) {
+                System.out.println(a[i][j]);
+                count++;
+            }
+            maxr--;
+
+            //right wall
+            for (int i = maxr, j = maxc; i >= minr && count < noOfElements; i--) {
+                System.out.println(a[i][j]);
+                count++;
+            }
+            maxc--;
+
+            //top wall
+            for (int i = minr, j = maxc; j >= minc && count < noOfElements; j--) {
+                System.out.println(a[i][j]);
+                count++;
+            }
+            minr++;
+        }
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+[5]* Exit Point Of A Matrix --> wo value batao jaha se player bahar nikla
+Question
+1. You are given a number n, representing the number of rows.
+2. You are given a number m, representing the number of columns.
+3. You are given n*m numbers (1's and 0's), representing elements of 2d array a.
+4. Consider this array a maze and a player enters from top-left corner in east direction.
+5. The player moves in the same direction as long as he meets '0'. On seeing a 1, he takes a 90 deg right turn.
+6. You are required to print the indices in (row, col) format of the point from where you exit the matrix.
+
+Sample Input
+4
+4
+0
+0
+1
+0
+1
+0
+0
+0
+0
+0
+0
+0
+1
+0
+1
+0
+Sample Output
+1
+3
+
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+        int r = scn.nextInt();
+        int c = scn.nextInt();
+
+        int[][] a = new int[r][c];
+
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                a[i][j] = scn.nextInt();
+            }
+        }
+        
+        //inki jagah koi doosre variables bhi le sakte ho bhaya
+        int i = 0;
+        int j = 0;
+        
+        // jaise hi 1 milega, direction change kar denge (subsequently add karenge values)
+        int direction = 0;          // 0-east, 1-south, 2-west, 3-south
+
+        //ye while loop issilye, coz hame nahi pata ise kitni baar chalana hai. Iski jagah " for(;;) " bhi use kar sakte hain
+        while(true) {  
+        
+            direction = (direction + a[i][j]) % 4;
+
+            if (direction == 0) {           //east
+                j++;
+            } else if (direction == 1) {            //south
+                i++;
+            } else if (direction == 2) {            //west
+                j--;
+            } else if (direction == 3) {            //north
+                i--;
+            }
+
+            //ab ye check karna hai ki i aur j loop se bahar kaha se nikle
+            if (i < 0) {
+                i++;        //nikalne k pehle waali i ki value chahiye hame
+                break;      //agar break nahi karenge, toh wo while(true) chalta hi jaega
+            } else if (j < 0) {
+                j++;
+                break;
+            } else if (i == r) {        //index ki value -1 hoti hai max
+                i--;
+                break;
+            } else if (j == c) {
+                j--;
+                break;
+            }
+        }
+        System.out.println(i);
+        System.out.println(j);
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+[6]*Rotate By 90 Degree-[isko abstraction se karke dekh]
+
+Question
+1. You are given a number n, representing the number of rows and number of columns.
+2. You are given n*n numbers, representing elements of 2d array a.
+3. You are required to rotate the matrix by 90 degree clockwise and then display the contents using display function.
+*Note - you are required to do it in-place i.e. no extra space should be used to achieve it .*
+
+Sample Input
+
+4
+11
+12
+13
+14
+21
+22
+23
+24
+31
+32
+33
+34
+41
+42
+43
+44
+
+Sample Output
+41 31 21 11
+42 32 22 12
+43 33 23 13
+44 34 24 14
+
+
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+
+        // single input, as it is a sqare matrix
+        int n = scn.nextInt();
+        int[][] a = new int[n][n];
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[0].length; j++) {
+                a[i][j] = scn.nextInt();
+            }
+        }
+
+        // row--> col (transpose)
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i; j < a[0].length; j++) { 		// j = i, coz ye loop diagonally chalega, ya phir i++ & j++ bhi kar sakte hain(loop k baad), but wo last mei false ho jaega
+                int temp = a[i][j];
+                a[i][j] = a[j][i];
+                a[j][i] = temp;
+            }
+        }
+
+
+        // Ab rowwise, har array ko reverse kiya hai idher
+        for (int i = 0; i < a[0].length; i++) {
+            int leftidx = 0;
+            int rightidx = a[0].length - 1;			
+            while (leftidx < rightidx) {
+                int temp = a[i][leftidx];
+                a[i][leftidx] = a[i][rightidx]; 		//i'th row ki left index ko i'th row ki right index se replace kiya
+                a[i][rightidx] = temp;
+
+                leftidx++;
+                rightidx--;
+            }
+        }
+        display(a);
+    }
+
+
+
+    // ye sirf print kar raha hai 
+    public static void display(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+[7]
