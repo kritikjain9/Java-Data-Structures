@@ -3,7 +3,6 @@ import java.util.*;
 
 public class Main{
   
-
 public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     String exp = br.readLine();
@@ -44,7 +43,6 @@ public static void main(String[] args) throws Exception {
     System.out.println(eval.peek());
     System.out.println(infix.peek());
     System.out.println(postfix.peek());
-    
 
  }
 }
