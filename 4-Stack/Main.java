@@ -3,46 +3,33 @@ import java.util.*;
 
 public class Main{
   
-public static void main(String[] args) throws Exception {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    String exp = br.readLine();
+public static void main(String[] args) throws Exception{
+        Scanner scn = new Scanner(System.in);
+        int n1 = scn.nextInt();
+        int m1 = scn.nextInt();
+        int[][] a1 = new int[n1][m1];
 
-    Stack<Integer> eval = new Stack<>();
-    Stack<String> postfix = new Stack<>();
-    Stack<String> infix = new Stack<>();
+        for(int i = 0; i < n1; i++){
+            for(int j = 0; j < m1; j++){
+                a1[i][j] = scn.nextInt();
+            }
+        }
 
-    for(int i = exp.length() - 1; i >= 0; i--){
-      char ch = exp.charAt(i);
+        int n2 = scn.nextInt();
+        int m2 = scn.nextInt();
+        int[][] a2 = new int[n2][m2];
 
-      if(ch >= '0' && ch <= '9'){
-        eval.push(Integer.parseInt(ch+""));
-        postfix.push(ch+"");
-        infix.push(ch+"");
-      }
-      else if(ch == '+' || ch == '-' || ch == '*' || ch == '/'){
-        //evalutaion stack
-          int Ev1 = eval.pop();
-          int Ev2 = eval.pop();
-          
-          if(ch == '+')eval.push(Ev1 + Ev2);
-          else if(ch == '*')eval.push(Ev1 * Ev2);
-          else if(ch == '/')eval.push(Ev1 / Ev2);
-          else if(ch == '-')eval.push(Ev1 - Ev2);
+        for(int i = 0; i < n2; i++){
+            for(int j = 0; j < m2; j++){
+                a2[i][j] = scn.nextInt();
+            }
+        }
 
-          //prefix stack
-          String Pv1 = postfix.pop();
-          String Pv2 = postfix.pop();
-          postfix.push(Pv1+Pv2+ch);
+        if(m1 != n2){
+            return;
+        }
 
-          //infix stack
-          String Iv1 = infix.pop();
-          String Iv2 = infix.pop();
-          infix.push('(' + Iv1 +ch+ Iv2+')');
-      }
+
+
     }
-    System.out.println(eval.peek());
-    System.out.println(infix.peek());
-    System.out.println(postfix.peek());
-
- }
 }
